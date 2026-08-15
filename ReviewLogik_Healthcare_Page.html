@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ReviewLogik | Patient Experience Intelligence for Healthcare</title>
+<meta name="description" content="ReviewLogik helps hospitals, clinics, and wellness providers understand and improve the patient experience, with a response protocol aligned to India's DPDP Act." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-primary:#0F4C81; --color-primary-dark:#0A3457; --color-primary-100:#E8F0F7;
+    --color-teal:#00838A; --color-teal-bright:#00A6A6; --color-teal-100:#E1F4F3;
+    --color-ink:#111827; --color-slate:#55606B; --color-slate-light:#8993A1;
+    --color-surface:#FFFFFF; --color-surface-alt:#F7FAFC; --color-line:#E2E8F0;
+    --color-success-text:#157F5A; --color-success-wash:#E7F6EE;
+    --color-warning-text:#8A5A10; --color-warning-wash:#FDF3E3;
+    --font:'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--color-surface); font-family:var(--font); color:var(--color-ink); }
+  a{ color:inherit; }
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+  section{ padding:76px 0; }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-teal); margin-bottom:12px; }
+  h2.section-title{ font-size:clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem); font-weight:700; margin:0 0 14px; letter-spacing:-0.01em; }
+  .section-sub{ font-size:16.5px; color:var(--color-slate); max-width:640px; margin-bottom:40px; line-height:1.55; }
+
+  .btn-pill{ display:inline-block; padding:13px 26px; border-radius:999px; font-size:14.5px; font-weight:600; text-decoration:none; cursor:pointer; border:none; }
+  .btn-primary{ background:var(--color-teal); color:#fff; box-shadow:0 10px 24px rgba(0,131,138,0.25); }
+  .btn-ghost{ background:#fff; border:1.5px solid var(--color-teal); color:var(--color-teal); }
+  .btn-on-dark{ background:#fff; color:var(--color-primary-dark); }
+
+  header.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--color-line); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1160px; margin:0 auto; }
+  .wordmark{ font-weight:800; font-size:19px; color:var(--color-primary); letter-spacing:-0.01em; text-decoration:none; }
+  nav.links{ display:flex; align-items:center; gap:28px; }
+  nav.links a{ font-size:14px; color:var(--color-slate); text-decoration:none; font-weight:500; }
+  nav.links a.current{ color:var(--color-primary); font-weight:700; }
+
+  .hero{ background:linear-gradient(135deg, var(--color-teal-100) 0%, var(--color-primary-100) 100%); padding:64px 0 60px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.9fr; gap:50px; align-items:center; }
+  .badge{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid rgba(0,131,138,0.25); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600; color:var(--color-teal); margin-bottom:20px; }
+  .badge .dot{ width:7px; height:7px; border-radius:50%; background:var(--color-success-text); }
+  .hero h1{ font-size:clamp(1.9rem, 1.3rem + 2.5vw, 2.9rem); font-weight:700; color:var(--color-ink); line-height:1.2; margin:0 0 18px; }
+  .hero h1 .hl{ color:var(--color-teal); }
+  .hero p.sub{ font-size:17px; color:var(--color-slate); line-height:1.6; margin:0 0 28px; max-width:480px; }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+
+  /* AI EXECUTIVE SUMMARY CARD */
+  .ai-card{ background:var(--color-primary-dark); border-radius:20px; padding:26px 26px 20px; color:#fff; }
+  .ai-card .head{ display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+  .ai-card .head .pulse{ width:8px; height:8px; border-radius:50%; background:var(--color-teal-bright); }
+  .ai-card .head .t{ font-size:11.5px; font-weight:700; letter-spacing:0.05em; color:#9FC0D6; text-transform:uppercase; }
+  .ai-row{ display:flex; gap:10px; padding:10px 0; border-top:1px solid #1C3C5C; font-size:13px; line-height:1.5; color:#E8F0F7; }
+  .ai-row:first-of-type{ border-top:none; }
+  .ai-row .b{ color:var(--color-teal-bright); flex-shrink:0; }
+  .ai-note{ margin-top:14px; font-size:10.5px; color:#7C93A8; font-style:italic; }
+
+  /* SEGMENTS */
+  .segments{ background:#fff; }
+  .seg-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  .seg-card{ background:var(--color-surface-alt); border-radius:16px; padding:22px 18px; text-align:center; }
+  .seg-card .mark{ width:38px; height:38px; border-radius:50%; background:var(--color-teal); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; margin:0 auto 12px; }
+  .seg-card h3{ font-size:13.5px; font-weight:700; margin:0 0 6px; line-height:1.25; }
+  .seg-card p{ font-size:11px; color:var(--color-slate); line-height:1.4; margin:0; }
+
+  /* TOUCHPOINTS CHAIN */
+  .touchpoints{ background:var(--color-surface-alt); }
+  .tp-row{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .tp-chip{ background:#fff; border:1px solid var(--color-line); border-radius:999px; padding:10px 20px; font-size:13.5px; font-weight:600; color:var(--color-ink); }
+
+  /* PROTOCOL */
+  .protocol{ background:#fff; }
+  .protocol-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+  .never-list{ background:var(--color-surface-alt); border-radius:18px; padding:28px; }
+  .never-list .label{ font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--color-warning-text); margin-bottom:14px; display:block; }
+  .never-list ul{ margin:0; padding:0; list-style:none; }
+  .never-list li{ font-size:14px; color:var(--color-ink); line-height:1.55; margin-bottom:12px; padding-left:24px; position:relative; }
+  .never-list li:before{ content:"\2715"; position:absolute; left:0; color:#B03B30; font-size:12px; top:3px; }
+
+  /* PILLARS reuse */
+  .pillars{ background:var(--color-surface-alt); }
+  .pillar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .pillar-card{ background:#fff; border-radius:20px; padding:30px 26px; border:1px solid var(--color-line); }
+  .pillar-card .mark{ width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px; color:#fff; margin-bottom:18px; }
+  .pillar-card h3{ font-size:18px; margin:0 0 8px; }
+  .pillar-card p{ font-size:14px; color:var(--color-slate); line-height:1.55; margin:0; }
+
+  /* INDEX CALLOUT */
+  .index-cta{ background:linear-gradient(135deg, var(--color-primary-dark) 0%, #062240 100%); border-radius:24px; padding:44px 40px; color:#fff; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+  .index-cta .txt h3{ font-size:22px; margin:0 0 8px; }
+  .index-cta .txt p{ font-size:14px; color:#C3CEDD; margin:0; max-width:480px; line-height:1.6; }
+
+  /* FINAL CTA */
+  .final-cta{ background:linear-gradient(135deg, var(--color-teal) 0%, var(--color-primary-dark) 100%); text-align:center; color:#fff; }
+  .final-cta h2{ font-size:clamp(1.6rem,1.2rem+1.6vw,2.2rem); margin:0 0 12px; }
+  .final-cta p{ font-size:15.5px; color:#DCEFEF; margin:0 0 28px; }
+
+  footer{ background:var(--color-primary-dark); color:#AEBBD1; padding:52px 0 26px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:36px; }
+  footer .wordmark{ color:#fff; }
+  footer .tag{ font-size:13px; color:#8DA0BE; margin-top:6px; }
+  footer h5{ color:#fff; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; margin:0 0 14px; }
+  footer ul{ list-style:none; margin:0; padding:0; }
+  footer li{ margin-bottom:9px; }
+  footer a{ text-decoration:none; color:#AEBBD1; font-size:13px; }
+  .footer-bottom{ border-top:1px solid #1C3C5C; padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; color:#8DA0BE; }
+
+  @media (max-width:900px){
+    .hero-grid, .protocol-grid{ grid-template-columns:1fr; }
+    .seg-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">ReviewLogik</a>
+    <nav class="links">
+      <a href="#">Hospitality</a>
+      <a href="#" class="current">Healthcare</a>
+      <a href="#">Solutions</a>
+      <a href="#">Kerala Hospital Index</a>
+      <a href="#">Resources</a>
+    </nav>
+    <a class="btn-pill btn-primary" href="#connect">Connect with Us</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span>Privacy-First &middot; DPDP Act-Aligned</div>
+        <h1>You care for patients. <span class="hl">We make sure it shows.</span></h1>
+        <p class="sub">ReviewLogik turns patient feedback into a reputation your hospital, clinic, or wellness center can be proud of -- monitored, answered, and protected, without adding to anyone's workload.</p>
+        <div class="hero-ctas">
+          <a class="btn-pill btn-primary" href="#connect">Connect with Us</a>
+          <a class="btn-pill btn-ghost" href="#segments">See How It Works</a>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="head"><span class="pulse"></span><span class="t">AI EXECUTIVE SUMMARY</span></div>
+        <div class="ai-row"><span class="b">&#9679;</span>Emergency department wait times are driving a rising share of negative feedback this month.</div>
+        <div class="ai-row"><span class="b">&#9679;</span>Registration desk satisfaction improved noticeably after recent process changes.</div>
+        <div class="ai-row"><span class="b">&#9679;</span>Billing concerns increased across two facilities this week -- flagged for the Quality team.</div>
+        <div class="ai-row"><span class="b">&#9679;</span>Three operational improvements identified that could meaningfully lift review scores.</div>
+        <div class="ai-note">Illustrative example &mdash; not real client or patient data.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTS -->
+  <section class="segments" id="segments">
+    <div class="wrap">
+      <div class="eyebrow">Who We Serve</div>
+      <h2 class="section-title">Patient experience intelligence, for every kind of care.</h2>
+      <div class="section-sub">From hospitals and specialty clinics to diagnostics, rehabilitation, and wellness -- the same platform, adapted to how each is actually reviewed.</div>
+      <div class="seg-grid">
+        <div class="seg-card"><div class="mark">H</div><h3>Hospitals &amp; Networks</h3><p>Understand experience across facilities, departments, and patient touchpoints.</p></div>
+        <div class="seg-card"><div class="mark">C</div><h3>Specialty Clinics</h3><p>Identify what patients value, and where service friction affects trust.</p></div>
+        <div class="seg-card"><div class="mark">A</div><h3>Ayurveda &amp; Wellness</h3><p>Understand the complete experience from enquiry through follow-up.</p></div>
+        <div class="seg-card"><div class="mark">R</div><h3>Rehabilitation Centers</h3><p>Track experience across longer patient journeys and recurring touchpoints.</p></div>
+        <div class="seg-card"><div class="mark">D</div><h3>Diagnostic Centers</h3><p>Understand waiting, registration, communication, and turnaround.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUCHPOINTS -->
+  <section class="touchpoints">
+    <div class="wrap">
+      <div class="eyebrow">Beyond the Review</div>
+      <h2 class="section-title">Patients don't experience a hospital as one department.</h2>
+      <div class="section-sub">They experience every one of these -- and ReviewLogik connects the feedback signal across all of them, not just the star rating.</div>
+      <div class="tp-row">
+        <div class="tp-chip">Appointment Access</div>
+        <div class="tp-chip">Registration</div>
+        <div class="tp-chip">Waiting</div>
+        <div class="tp-chip">Communication</div>
+        <div class="tp-chip">Billing</div>
+        <div class="tp-chip">Facilities</div>
+        <div class="tp-chip">Diagnostics</div>
+        <div class="tp-chip">Discharge</div>
+        <div class="tp-chip">Follow-Up</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTOCOL -->
+  <section class="protocol">
+    <div class="wrap protocol-grid">
+      <div>
+        <div class="eyebrow">Our Differentiator</div>
+        <h2 class="section-title" style="font-size:28px;">Privacy comes first. Always.</h2>
+        <p style="color:var(--color-slate); font-size:15px; line-height:1.65;">Every response is written against a protocol designed specifically for patient confidentiality and clinical liability -- reviewed before it ever goes public, and routed to your team the moment a reply risks saying too much. Built around India's Digital Personal Data Protection Act (DPDP Act, 2023) -- not a framework built for another country's law.</p>
+      </div>
+      <div class="never-list">
+        <span class="label">What We Never Do</span>
+        <ul>
+          <li>Confirm or imply a patient's presence, diagnosis, or treatment in a public reply</li>
+          <li>Argue a clinical or billing dispute in the comments -- it routes to your team instead</li>
+          <li>Post a response without a defined escalation path for anything serious</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="wrap">
+      <div class="eyebrow">How We Work</div>
+      <h2 class="section-title">Three commitments, working together.</h2>
+      <div class="pillar-grid">
+        <div class="pillar-card"><div class="mark" style="background:var(--color-primary);">P</div><h3>Protect</h3><p>Daily monitoring and response across Google, Practo, JustDial, and Facebook, with a protocol built for clinical confidentiality.</p></div>
+        <div class="pillar-card"><div class="mark" style="background:var(--color-teal);">G</div><h3>Grow</h3><p>Compliant, non-incentivized review generation, and doctor- and department-level reputation building.</p></div>
+        <div class="pillar-card"><div class="mark" style="background:var(--color-primary-dark);">I</div><h3>Improve</h3><p>AI sentiment analysis by theme, feeding an executive dashboard leadership actually uses.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDEX CALLOUT -->
+  <section>
+    <div class="wrap">
+      <div class="index-cta">
+        <div class="txt">
+          <h3>We publish the Kerala Hospital Reputation Index.</h3>
+          <p>An annual, audit-based certification recognizing hospitals for patient experience excellence -- modeled on the same principle as TripAdvisor's Certificate of Excellence. A certification, not a competitive ranking.</p>
+        </div>
+        <a class="btn-pill btn-on-dark" href="#">View the Index &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="connect">
+    <div class="wrap">
+      <h2>See where your reputation stands.</h2>
+      <p>A free baseline audit, no obligation.</p>
+      <a class="btn-pill btn-on-dark" href="mailto:info@reviewlogik.com">Connect with Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><div class="wordmark" style="font-weight:800; font-size:19px;">ReviewLogik</div><div class="tag">The Experience Intelligence Platform</div></div>
+      <div><h5>Industries</h5><ul><li><a href="#">Hospitality</a></li><li><a href="#">Healthcare</a></li></ul></div>
+      <div><h5>Platform</h5><ul><li><a href="#">Solutions</a></li><li><a href="#">Kerala Hospital Index</a></li><li><a href="#">Resources</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="#">info@reviewlogik.com</a></li><li><a href="#">+91 889 151 6565</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ReviewLogik. All rights reserved.</span><span>Kochi, Kerala, India</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

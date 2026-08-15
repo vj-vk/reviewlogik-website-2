@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ReviewLogik | Guest Experience Intelligence for Hospitality</title>
+<meta name="description" content="ReviewLogik helps hotels, resorts, restaurants, and spas turn guest feedback into a stronger reputation and better operations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-primary:#0F4C81; --color-primary-dark:#0A3457; --color-primary-100:#E8F0F7;
+    --color-teal:#00838A; --color-teal-bright:#00A6A6; --color-teal-100:#E1F4F3;
+    --color-ink:#111827; --color-slate:#55606B; --color-slate-light:#8993A1;
+    --color-surface:#FFFFFF; --color-surface-alt:#F7FAFC; --color-line:#E2E8F0;
+    --color-success-text:#157F5A; --color-success-wash:#E7F6EE;
+    --color-warning-text:#8A5A10; --color-warning-wash:#FDF3E3;
+    --font:'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--color-surface); font-family:var(--font); color:var(--color-ink); }
+  a{ color:inherit; }
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+  section{ padding:76px 0; }
+  .eyebrow{ font-size:12.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-teal); margin-bottom:12px; }
+  h2.section-title{ font-size:clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem); font-weight:700; margin:0 0 14px; letter-spacing:-0.01em; }
+  .section-sub{ font-size:16.5px; color:var(--color-slate); max-width:640px; margin-bottom:40px; line-height:1.55; }
+
+  .btn-pill{ display:inline-block; padding:13px 26px; border-radius:999px; font-size:14.5px; font-weight:600; text-decoration:none; cursor:pointer; border:none; }
+  .btn-primary{ background:var(--color-teal); color:#fff; box-shadow:0 10px 24px rgba(0,131,138,0.25); }
+  .btn-ghost{ background:#fff; border:1.5px solid var(--color-teal); color:var(--color-teal); }
+  .btn-on-dark{ background:#fff; color:var(--color-primary-dark); }
+
+  header.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--color-line); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1160px; margin:0 auto; }
+  .wordmark{ font-weight:800; font-size:19px; color:var(--color-primary); letter-spacing:-0.01em; text-decoration:none; }
+  nav.links{ display:flex; align-items:center; gap:28px; }
+  nav.links a{ font-size:14px; color:var(--color-slate); text-decoration:none; font-weight:500; }
+  nav.links a.current{ color:var(--color-primary); font-weight:700; }
+
+  .hero{ background:linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-teal-100) 100%); padding:64px 0 60px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.9fr; gap:50px; align-items:center; }
+  .badge{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid rgba(0,131,138,0.25); padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:600; color:var(--color-teal); margin-bottom:20px; }
+  .badge .dot{ width:7px; height:7px; border-radius:50%; background:var(--color-success-text); }
+  .hero h1{ font-size:clamp(1.9rem, 1.3rem + 2.5vw, 2.9rem); font-weight:700; color:var(--color-ink); line-height:1.2; margin:0 0 18px; }
+  .hero h1 .hl{ color:var(--color-teal); }
+  .hero p.sub{ font-size:17px; color:var(--color-slate); line-height:1.6; margin:0 0 28px; max-width:480px; }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px; }
+
+  /* AI ALERT CARD (hospitality-specific, mirrors healthcare's AI Executive Summary) */
+  .alert-card{ background:var(--color-primary-dark); border-radius:20px; padding:26px; color:#fff; }
+  .alert-card .head{ display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+  .alert-card .head .pulse{ width:8px; height:8px; border-radius:50%; background:#E8892B; }
+  .alert-card .head .t{ font-size:11.5px; font-weight:700; letter-spacing:0.05em; color:#9FC0D6; text-transform:uppercase; }
+  .alert-card .headline{ font-size:15px; font-weight:600; line-height:1.5; margin-bottom:18px; }
+  .alert-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+  .alert-item .k{ font-size:10px; color:#9FC0D6; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:3px; }
+  .alert-item .v{ font-size:13.5px; font-weight:700; }
+  .alert-item .v.warn{ color:#F3A356; }
+  .ai-note{ font-size:10.5px; color:#7C93A8; font-style:italic; }
+
+  /* SEGMENTS */
+  .segments{ background:#fff; }
+  .seg-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+  .seg-card{ background:var(--color-surface-alt); border-radius:16px; padding:18px 14px; text-align:center; }
+  .seg-card .mark{ width:34px; height:34px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; margin:0 auto 10px; }
+  .seg-card h3{ font-size:12.5px; font-weight:700; margin:0; line-height:1.3; }
+
+  /* GUEST JOURNEY */
+  .journey{ background:var(--color-surface-alt); }
+  .journey-row{ display:flex; gap:12px; overflow-x:auto; padding-bottom:10px; }
+  .journey-stage{ min-width:170px; background:#fff; border:1px solid var(--color-line); border-radius:16px; padding:20px 18px; flex-shrink:0; }
+  .journey-stage .n{ font-size:10px; font-weight:700; color:var(--color-teal); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px; }
+  .journey-stage h4{ font-size:14.5px; margin:0 0 10px; }
+  .journey-stage ul{ margin:0; padding:0; list-style:none; }
+  .journey-stage li{ font-size:11.5px; color:var(--color-slate); margin-bottom:5px; }
+
+  /* SERVICES (real) */
+  .pillars{ background:#fff; }
+  .pillar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .pillar-card{ background:var(--color-surface-alt); border-radius:20px; padding:30px 26px; border:1px solid var(--color-line); }
+  .pillar-card .mark{ width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px; color:#fff; margin-bottom:18px; }
+  .pillar-card h3{ font-size:18px; margin:0 0 8px; }
+  .pillar-card p{ font-size:14px; color:var(--color-slate); line-height:1.55; margin:0; }
+
+  /* TRUST */
+  .trust{ background:var(--color-surface-alt); text-align:center; }
+  .trust .lbl{ font-size:12px; color:var(--color-slate-light); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:26px; font-weight:600; }
+  .logo-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+  .logo-tile{ background:#fff; border:1px solid var(--color-line); border-radius:14px; padding:16px 10px; font-size:13px; font-weight:700; color:var(--color-primary); }
+
+  .final-cta{ background:linear-gradient(135deg, var(--color-teal) 0%, var(--color-primary-dark) 100%); text-align:center; color:#fff; }
+  .final-cta h2{ font-size:clamp(1.6rem,1.2rem+1.6vw,2.2rem); margin:0 0 12px; }
+  .final-cta p{ font-size:15.5px; color:#DCEFEF; margin:0 0 28px; }
+
+  footer{ background:var(--color-primary-dark); color:#AEBBD1; padding:52px 0 26px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:36px; }
+  footer .wordmark{ color:#fff; }
+  footer .tag{ font-size:13px; color:#8DA0BE; margin-top:6px; }
+  footer h5{ color:#fff; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; margin:0 0 14px; }
+  footer ul{ list-style:none; margin:0; padding:0; }
+  footer li{ margin-bottom:9px; }
+  footer a{ text-decoration:none; color:#AEBBD1; font-size:13px; }
+  .footer-bottom{ border-top:1px solid #1C3C5C; padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; color:#8DA0BE; }
+
+  @media (max-width:900px){
+    .hero-grid, .alert-grid{ grid-template-columns:1fr; }
+    .seg-grid, .logo-grid{ grid-template-columns:1fr 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">ReviewLogik</a>
+    <nav class="links">
+      <a href="#" class="current">Hospitality</a>
+      <a href="#">Healthcare</a>
+      <a href="#">Solutions</a>
+      <a href="#">Kerala Hospital Index</a>
+      <a href="#">Resources</a>
+    </nav>
+    <a class="btn-pill btn-primary" href="#connect">Connect with Us</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span>Trusted Across Global Hospitality Brands</div>
+        <h1>Where guest reviews become <span class="hl">business growth.</span></h1>
+        <p class="sub">Reputation intelligence and expert response management that help hotels, resorts, restaurants, and spas strengthen guest trust, improve rankings, and grow direct bookings.</p>
+        <div class="hero-ctas">
+          <a class="btn-pill btn-primary" href="#connect">Connect with Us</a>
+          <a class="btn-pill btn-ghost" href="#journey">See How It Works</a>
+        </div>
+      </div>
+      <div class="alert-card">
+        <div class="head"><span class="pulse"></span><span class="t">AI EXPERIENCE ALERT</span></div>
+        <div class="headline">Housekeeping-related complaints increased 28% over the last 30 days.</div>
+        <div class="alert-grid">
+          <div class="alert-item"><div class="k">Primary Issue</div><div class="v">Room Cleanliness</div></div>
+          <div class="alert-item"><div class="k">Trend</div><div class="v warn">&#9650; Emerging</div></div>
+        </div>
+        <div class="alert-item" style="margin-bottom:14px;"><div class="k">Recommended Action</div><div class="v" style="font-weight:500; font-size:12.5px;">Review housekeeping inspection compliance during peak occupancy.</div></div>
+        <div class="ai-note">Illustrative example &mdash; not real client data.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTS -->
+  <section class="segments">
+    <div class="wrap">
+      <div class="eyebrow">Who We Serve</div>
+      <h2 class="section-title">From boutique properties to global-brand groups.</h2>
+      <div class="section-sub">The same reputation intelligence, adapted to how each type of property is actually reviewed.</div>
+      <div class="seg-grid">
+        <div class="seg-card"><div class="mark">H</div><h3>Hotels</h3></div>
+        <div class="seg-card"><div class="mark">R</div><h3>Resorts</h3></div>
+        <div class="seg-card"><div class="mark">B</div><h3>Boutique Properties</h3></div>
+        <div class="seg-card"><div class="mark">F</div><h3>Restaurants</h3></div>
+        <div class="seg-card"><div class="mark">S</div><h3>Spas</h3></div>
+        <div class="seg-card"><div class="mark">G</div><h3>Multi-Property Groups</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUEST JOURNEY -->
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <div class="eyebrow">Every Stage Leaves a Signal</div>
+      <h2 class="section-title">The guest journey doesn't end at checkout.</h2>
+      <div class="section-sub">ReviewLogik connects feedback across every stage -- not just the review that gets posted at the end.</div>
+      <div class="journey-row">
+        <div class="journey-stage"><div class="n">Before Arrival</div><h4>Booking</h4><ul><li>Reservations</li><li>Pre-arrival communication</li><li>Expectations set</li></ul></div>
+        <div class="journey-stage"><div class="n">Arrival</div><h4>First Impressions</h4><ul><li>Check-in</li><li>Welcome</li><li>Front desk</li></ul></div>
+        <div class="journey-stage"><div class="n">The Stay</div><h4>Room &amp; Service</h4><ul><li>Housekeeping</li><li>Maintenance</li><li>Wi-Fi &amp; amenities</li></ul></div>
+        <div class="journey-stage"><div class="n">F&amp;B</div><h4>Dining</h4><ul><li>Breakfast</li><li>Restaurants &amp; bars</li><li>Service speed, value</li></ul></div>
+        <div class="journey-stage"><div class="n">Departure</div><h4>Checkout</h4><ul><li>Billing</li><li>Check-out</li><li>Farewell</li></ul></div>
+        <div class="journey-stage"><div class="n">After Stay</div><h4>Loyalty</h4><ul><li>Reviews</li><li>Repeat intent</li><li>Recommendations</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (real) -->
+  <section class="pillars">
+    <div class="wrap">
+      <div class="eyebrow">Our Services</div>
+      <h2 class="section-title">Three ways we keep your reputation moving forward.</h2>
+      <div class="pillar-grid">
+        <div class="pillar-card"><div class="mark" style="background:var(--color-primary);">1</div><h3>Online Guest Review</h3><p>Monitoring across Google, TripAdvisor, Booking.com, and Expedia, with apt, timely responses in your brand voice.</p></div>
+        <div class="pillar-card"><div class="mark" style="background:var(--color-teal);">2</div><h3>Guest Satisfaction Surveys</h3><p>Every GSS response aligned to your property or brand standards, survey by survey.</p></div>
+        <div class="pillar-card"><div class="mark" style="background:var(--color-primary-dark);">3</div><h3>Real-Time Reviews</h3><p>Real-time response to in-house guests -- catching a problem while it's still fixable.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="lbl">Trusted Across Brands Including</div>
+      <div class="logo-grid">
+        <div class="logo-tile">Marriott</div>
+        <div class="logo-tile">Hilton</div>
+        <div class="logo-tile">Hyatt</div>
+        <div class="logo-tile">IHG</div>
+        <div class="logo-tile">Wyndham</div>
+        <div class="logo-tile">Accor</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="connect">
+    <div class="wrap">
+      <h2>Ready to see where your reputation stands?</h2>
+      <p>A free baseline audit, no obligation.</p>
+      <a class="btn-pill btn-on-dark" href="mailto:info@reviewlogik.com">Connect with Us</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><div class="wordmark" style="font-weight:800; font-size:19px;">ReviewLogik</div><div class="tag">The Experience Intelligence Platform</div></div>
+      <div><h5>Industries</h5><ul><li><a href="#">Hospitality</a></li><li><a href="#">Healthcare</a></li></ul></div>
+      <div><h5>Platform</h5><ul><li><a href="#">Solutions</a></li><li><a href="#">Kerala Hospital Index</a></li><li><a href="#">Resources</a></li></ul></div>
+      <div><h5>Contact</h5><ul><li><a href="#">info@reviewlogik.com</a></li><li><a href="#">+91 889 151 6565</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ReviewLogik. All rights reserved.</span><span>Kochi, Kerala, India</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

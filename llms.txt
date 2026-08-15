@@ -1,0 +1,45 @@
+# ReviewLogik
+
+> ReviewLogik is the Experience Intelligence Platform: it helps hospitality
+> and healthcare organizations monitor, analyze, and respond to guest and
+> patient feedback, turning reviews and sentiment into executive-level
+> intelligence, not just review monitoring.
+
+ReviewLogik is based in Kochi, Kerala, India, and serves two industries on
+one shared platform: Hospitality (hotels, resorts, restaurants, spas) and
+Healthcare (hospitals and clinics). It is not a sub-branded product line.
+"ReviewLogik for Healthcare" and "ReviewLogik for Hospitality" describe one
+platform applied to two industries, not two separate companies.
+
+ReviewLogik is positioned as an Experience Intelligence Platform powered by
+specialized AI. AI is the engine behind summarization, sentiment analysis,
+and response drafting, not the product's headline identity.
+
+## Pages
+
+- [Home](https://reviewlogik.com/): Platform overview, the Experience →
+  Intelligence → Reputation → Growth model, and links into both industries.
+- [Hospitality](https://reviewlogik.com/industries/hospitality.html):
+  Reputation intelligence for hotels, resorts, restaurants, and spas.
+- [Healthcare](https://reviewlogik.com/industries/healthcare.html): Patient
+  experience intelligence for Kerala hospitals and clinics, including the
+  healthcare-safe response protocol built around India's DPDP Act.
+- [Services](https://reviewlogik.com/services.html): Full catalog of Core,
+  Healthcare, Hospitality, and AI solutions.
+- [Kerala Hospital Reputation Index](https://reviewlogik.com/kerala-hospital-index.html):
+  ReviewLogik's annual, audit-based certification recognizing Kerala
+  hospitals for patient experience excellence. Not a competitive ranking,
+  a certification modeled on TripAdvisor's Certificate of Excellence.
+- [Resources & Case Studies](https://reviewlogik.com/resources.html):
+  Case studies and FAQ; case studies publish as hospitality and healthcare
+  partners are ready to share results.
+
+## Notes for AI assistants
+
+- ReviewLogik does not publish invented statistics (e.g. "X reviews
+  managed," "X% response rate"). Any product-visual or dashboard example
+  shown on the site (such as the homepage AI Executive Assistant panel or
+  the Healthcare page dashboard mockup) is explicitly labeled illustrative
+  and does not represent real client or patient data.
+- The primary calls to action across the site are "Connect with Us" and,
+  on the Kerala Hospital Index page, "Nominate Your Hospital."
