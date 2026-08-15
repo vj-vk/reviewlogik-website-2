@@ -1,0 +1,35 @@
+<!--
+  SOURCE OF TRUTH: site header/nav.
+  All hrefs are root-relative ("/services.html" etc.), so this exact block
+  works unchanged from any page at any folder depth, just move
+  aria-current="page" to the active link. Copied into every real page's
+  <body>, right after the opening tag. If the nav ever changes, update here
+  first, then propagate by hand.
+-->
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="wordmark" href="/index.html" aria-label="ReviewLogik home">ReviewLogik</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/industries/hospitality.html">Hospitality</a>
+      <a href="/industries/healthcare.html">Healthcare</a>
+      <a href="/services.html">Services</a>
+      <a href="/kerala-hospital-index.html">Kerala Hospital Index</a>
+      <a href="/resources.html">Resources</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/services.html#audit">Connect with Us</a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile">
+    <a href="/industries/hospitality.html">Hospitality</a>
+    <a href="/industries/healthcare.html">Healthcare</a>
+    <a href="/services.html">Services</a>
+    <a href="/kerala-hospital-index.html">Kerala Hospital Index</a>
+    <a href="/resources.html">Resources</a>
+    <a href="/services.html#audit">Connect with Us</a>
+  </nav>
+</header>

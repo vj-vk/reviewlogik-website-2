@@ -1,0 +1,58 @@
+<!--
+  SOURCE OF TRUTH — shared <head> block.
+  Every real page's <head> follows this shape, with {{PLACEHOLDERS}} filled
+  in per page. The Organization JSON-LD block is copied verbatim on every
+  page; page-specific schema (FAQPage, BreadcrumbList, etc.) is added below it.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{PAGE_TITLE}} | ReviewLogik</title>
+<meta name="description" content="{{PAGE_DESCRIPTION}}">
+<link rel="canonical" href="https://reviewlogik.com/{{PAGE_PATH}}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{PAGE_TITLE}} | ReviewLogik">
+<meta property="og:description" content="{{PAGE_DESCRIPTION}}">
+<meta property="og:url" content="https://reviewlogik.com/{{PAGE_PATH}}">
+<meta property="og:image" content="https://reviewlogik.com/assets/img/og-default.png">
+<meta property="og:site_name" content="ReviewLogik">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{PAGE_TITLE}} | ReviewLogik">
+<meta name="twitter:description" content="{{PAGE_DESCRIPTION}}">
+<meta name="twitter:image" content="https://reviewlogik.com/assets/img/og-default.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<!-- Organization schema — identical on every page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ReviewLogik",
+  "url": "https://reviewlogik.com/",
+  "description": "ReviewLogik is the Experience Intelligence Platform, helping hospitality and healthcare organizations turn guest and patient feedback into reputation and growth.",
+  "sameAs": [
+    "https://www.facebook.com/reviewlogik/",
+    "https://www.instagram.com/reviewlogik/",
+    "https://www.linkedin.com/company/reviewlogik/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kochi",
+    "addressRegion": "Kerala",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-889-151-6565",
+    "email": "info@reviewlogik.com",
+    "contactType": "sales"
+  }
+}
+</script>
